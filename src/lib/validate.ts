@@ -18,7 +18,10 @@ export const startGameSchema = z.object({
 });
 
 export const submitGameSchema = z.object({
-	answer: z.number(),
+	answer: z.preprocess((val) => {
+		if (typeof val === "string") return Number.parseInt(val, 10);
+		return val;
+	}, z.number()),
 });
 
 export const gameIdZod = z
