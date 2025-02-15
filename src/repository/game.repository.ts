@@ -188,7 +188,7 @@ export async function getHistory(player: string, current = "") {
 			history: gameHistory.map((game) => ({
 				question: game.question,
 				answer: game.answer,
-				timeTaken: game.timeTaken,
+				timeTaken: game.timeTaken / 1000,
 			})),
 		};
 	} catch (error) {
