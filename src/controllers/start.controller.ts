@@ -1,3 +1,4 @@
+import { formatDate } from "../lib/utils";
 import env from "../config";
 import {
 	createAQuestion,
@@ -28,7 +29,7 @@ export default async function StartGameController(req: Request, res: Response) {
 			message: `Hello ${name}, find your submit API URL below`,
 			submit_url: `${env.server_url}/game/${slug}/submit`,
 			question,
-			time_started: req.timestamp,
+			time_started: formatDate(new Date(req.timestamp)),
 		});
 		return;
 	}
@@ -49,6 +50,6 @@ export default async function StartGameController(req: Request, res: Response) {
 		message: `Hello ${name}, find your submit API URL below`,
 		submit_url: `${env.server_url}/game/${slug}/submit`,
 		question,
-		time_started: req.timestamp,
+		time_started: formatDate(new Date(req.timestamp)),
 	});
 }
