@@ -16,7 +16,7 @@ This repository was submitted as part of requirements for CIRCA task.
 1.  Clone the repository
 
 ```bash
-git clone https://github.com/Malek-D/DevSpeedMind.git
+git clone https://github.com/malekd5/DevSpeedMind.git
 ```
 
 2.  Install dependencies
