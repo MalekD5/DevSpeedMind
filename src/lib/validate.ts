@@ -13,7 +13,7 @@ export const startGameSchema = z.object({
 	}, z
 		.number()
 		.int("difficulty must be a number in range of 1-4")
-		.min(1)
+		.min(0)
 		.max(4)),
 });
 

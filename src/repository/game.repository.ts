@@ -68,12 +68,16 @@ export async function getGameBySlug(slug: string) {
 	}
 }
 
-export async function createGame(
-	playerName: string,
-	difficulty: 1 | 2 | 3 | 4,
-) {
+export async function createGame(playerName: string, difficulty: number) {
 	const slug = createGameSlug();
-	const { question, answer } = generateRandomQuestion(difficulty);
+
+	let diff = difficulty;
+
+	if (diff === 0) {
+		diff = Math.floor(Math.random() * 4) + 1;
+	}
+
+	const { question, answer } = generateRandomQuestion(diff);
 
 	try {
 		await db.transaction(async (trx) => {
@@ -86,7 +90,7 @@ export async function createGame(
 				slug,
 				question,
 				answer,
-				difficulty,
+				difficulty: diff,
 				createdAt: new Date(Date.now()),
 			});
 		});
@@ -99,10 +103,17 @@ export async function createGame(
 
 export async function createAQuestion(
 	player: string,
-	difficulty: 1 | 2 | 3 | 4,
+	difficulty: 0 | 1 | 2 | 3 | 4,
 ) {
 	const slug = createGameSlug();
-	const { question, answer } = generateRandomQuestion(difficulty);
+
+	let diff = difficulty;
+
+	if (diff === 0) {
+		diff = Math.floor(Math.random() * 4) + 1;
+	}
+
+	const { question, answer } = generateRandomQuestion(diff);
 
 	try {
 		await db.insert(questionsTable).values({
@@ -110,7 +121,7 @@ export async function createAQuestion(
 			slug,
 			question,
 			answer,
-			difficulty,
+			difficulty: diff,
 			createdAt: new Date(Date.now()),
 		});
 

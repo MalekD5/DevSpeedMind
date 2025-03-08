@@ -9,7 +9,7 @@ export function createGameSlug() {
 
 const operands = ["+", "-", "*", "/"];
 
-export function generateRandomQuestion(difficulty: 1 | 2 | 3 | 4) {
+export function generateRandomQuestion(difficulty: number) {
 	const numberLength = difficulty;
 	const numberOfOperands = difficulty + 1;
 
